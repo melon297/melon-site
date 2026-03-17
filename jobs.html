@@ -147,7 +147,7 @@ function render() {
     grid.innerHTML = '<div class="empty"><h3>No jobs found</h3><p>Try adjusting your search or filter.</p></div>';
   } else {
     grid.innerHTML = pageJobs.map(j => {
-      const applyUrl = `https://www.mitalent.org/job-seeker/job-search/job-details/${j.code}`;
+      const applyUrl = `https://jobs.mitalent.org/job-seeker/job-details/JobCode/${j.code}`;
       return `<div class="job-card">
         <div class="job-title">${escHtml(j.title)}</div>
         <div class="job-org">${escHtml(j.org)}</div>
