@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session 1 Assessment — Melon 29:7</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1a3d2b;
+    --green-mid: #2d6147;
+    --green-light: #3d8a62;
+    --cream: #f5f0e8;
+    --cream-dark: #ede5d4;
+    --coral: #e8503a;
+    --coral-light: #f0705d;
+    --black: #111111;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(26,61,43,0.97);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--cream);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-back {
+    color: rgba(245,240,232,0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--cream); }
+
+  /* HEADER */
+  .intake-header {
+    background: var(--green);
+    padding: 140px 64px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .intake-header::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,80,58,0.12) 0%, transparent 70%);
+    top: -200px; right: -100px;
+    pointer-events: none;
+  }
+  .intake-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 6px 16px;
+    border-radius: 100px;
+    color: var(--cream);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 28px;
+  }
+  .intake-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--coral);
+    border-radius: 50%;
+  }
+  .intake-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4.5vw, 4rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.05;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+  }
+  .intake-header h1 em { font-style: italic; color: var(--coral); }
+  .intake-header p {
+    color: rgba(245,240,232,0.7);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 300;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* PROGRESS */
+  .progress-bar-wrap {
+    background: var(--green-mid);
+    padding: 20px 64px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    position: sticky;
+    top: 72px;
+    z-index: 90;
+  }
+  .progress-label {
+    color: var(--cream);
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    min-width: 120px;
+  }
+  .progress-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--coral);
+    border-radius: 99px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+  .progress-pct {
+    color: rgba(245,240,232,0.6);
+    font-size: 0.8rem;
+    min-width: 36px;
+    text-align: right;
+  }
+
+  /* FORM BODY */
+  .form-body {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 40px 120px;
+  }
+
+  /* SECTION CARDS */
+  .form-section {
+    background: white;
+    border-radius: 24px;
+    padding: 48px 52px;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--cream);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 20px;
+  }
+  .section-num {
+    background: var(--coral);
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .form-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--green);
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+  .form-section > p {
+    color: rgba(17,17,17,0.55);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  /* INPUTS */
+  .field { margin-bottom: 24px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .field label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+  .field label .req { color: var(--coral); margin-left: 3px; }
+  .field label .hint {
+    display: block;
+    font-weight: 300;
+    color: rgba(17,17,17,0.45);
+    font-size: 0.8rem;
+    margin-top: 2px;
+    letter-spacing: 0;
+  }
+  .fi {
+    background: var(--cream);
+    border: 1.5px solid rgba(26,61,43,0.12);
+    border-radius: 12px;
+    padding: 13px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--black);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+  }
+  .fi:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(26,61,43,0.08);
+    background: white;
+  }
+  .fi::placeholder { color: rgba(17,17,17,0.3); }
+  select.fi { cursor: pointer; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231a3d2b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+  textarea.fi { resize: vertical; min-height: 96px; }
+
+  /* RADIO / CHECKBOX CARDS */
+  .choice-grid { display: grid; gap: 10px; }
+  .choice-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+  .choice-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .choice-card {
+    position: relative;
+    cursor: pointer;
+  }
+  .choice-card input {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+  }
+  .choice-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    border: 2px solid transparent;
+    background: var(--cream);
+    cursor: pointer;
+    transition: all 0.2s;
+    line-height: 1.4;
+    font-size: 0.88rem;
+    color: rgba(17,17,17,0.75);
+  }
+  .choice-label:hover { border-color: rgba(26,61,43,0.3); background: white; }
+  .choice-card input:checked + .choice-label {
+    border-color: var(--green);
+    background: white;
+    color: var(--black);
+    box-shadow: 0 0 0 4px rgba(26,61,43,0.06);
+  }
+  .choice-mark {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 2px solid rgba(17,17,17,0.2);
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .choice-card.checkbox .choice-mark { border-radius: 5px; }
+  .choice-card input:checked + .choice-label .choice-mark {
+    background: var(--green);
+    border-color: var(--green);
+  }
+  .choice-card input:checked + .choice-label .choice-mark::after {
+    content: '';
+    width: 6px; height: 6px;
+    background: white;
+    border-radius: 50%;
+  }
+  .choice-card.checkbox input:checked + .choice-label .choice-mark::after {
+    content: '✓';
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 0;
+    width: auto; height: auto;
+  }
+  .choice-text strong {
+    display: block;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 3px;
+    font-size: 0.88rem;
+  }
+
+  /* SCALE SLIDER */
+  .scale-wrap { margin-top: 8px; }
+  .scale-track {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .scale-btn {
+    flex: 1;
+    height: 44px;
+    border-radius: 10px;
+    border: 2px solid rgba(26,61,43,0.12);
+    background: var(--cream);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: rgba(17,17,17,0.5);
+    transition: all 0.15s;
+    position: relative;
+  }
+  .scale-btn:hover { border-color: rgba(26,61,43,0.35); color: var(--black); }
+  .scale-btn.active {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
+  }
+  .scale-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-size: 0.72rem;
+    color: rgba(17,17,17,0.4);
+  }
+
+  /* DIVIDER */
+  .form-divider {
+    height: 1px;
+    background: rgba(0,0,0,0.06);
+    margin: 36px 0;
+  }
+
+  /* SUBMIT BAR */
+  .submit-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: white;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    padding: 20px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 90;
+    box-shadow: 0 -8px 32px rgba(0,0,0,0.08);
+  }
+  .submit-note {
+    color: rgba(17,17,17,0.45);
+    font-size: 0.85rem;
+    max-width: 400px;
+    line-height: 1.5;
+  }
+  .submit-btn {
+    background: var(--coral);
+    color: white;
+    border: none;
+    padding: 18px 44px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .submit-btn:hover { background: var(--coral-light); transform: translateY(-2px); }
+  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  /* SUCCESS */
+  #success-screen {
+    display: none;
+    text-align: center;
+    padding: 80px 40px;
+  }
+  #success-screen .success-icon {
+    font-size: 5rem;
+    margin-bottom: 28px;
+  }
+  #success-screen h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: var(--green);
+    margin-bottom: 16px;
+  }
+  #success-screen p {
+    color: rgba(17,17,17,0.6);
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+  }
+  .success-card {
+    background: var(--green);
+    border-radius: 20px;
+    padding: 36px 40px;
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .success-card p {
+    color: rgba(245,240,232,0.75);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  .success-card strong { color: var(--cream); font-weight: 600; }
+  .print-btn {
+    display: inline-block;
+    margin-top: 40px;
+    background: transparent;
+    border: 2px solid var(--green);
+    color: var(--green);
+    padding: 14px 32px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .print-btn:hover { background: var(--green); color: white; }
+
+  /* PRINT */
+  @media print {
+    nav, .progress-bar-wrap, .submit-bar { display: none; }
+    .intake-header { padding: 40px; background: var(--green); }
+    .form-body { padding: 20px; }
+    .form-section { page-break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+  }
+
+  @media (max-width: 700px) {
+    nav { padding: 16px 20px; }
+    .intake-header { padding: 110px 24px 60px; }
+    .progress-bar-wrap { padding: 16px 24px; }
+    .form-body { padding: 32px 16px 100px; }
+    .form-section { padding: 32px 24px; }
+    .field-row { grid-template-columns: 1fr; }
+    .choice-grid.cols-2 { grid-template-columns: 1fr; }
+    .choice-grid.cols-3 { grid-template-columns: 1fr; }
+    .submit-bar { padding: 16px 20px; flex-direction: column; gap: 12px; align-items: stretch; }
+    .submit-btn { width: 100%; text-align: center; }
+    .submit-note { max-width: none; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Netlify form discovery -->
+<form name="session1-intake" data-netlify="true" hidden>
+  <input name="first"><input name="last"><input name="email"><input name="phone">
+  <input name="zip"><input name="dob"><input name="who-i-am"><input name="journey-stage">
+  <input name="barriers-present"><input name="barriers-list">
+  <input name="housing"><input name="food"><input name="utility"><input name="banking">
+  <input name="income-stable"><input name="income-amount"><input name="income-source">
+  <input name="employment-status"><input name="credit-score-range"><input name="debt-level">
+  <input name="savings-emergency"><input name="banking-access"><input name="itin">
+  <input name="business-idea"><input name="business-stage"><input name="business-need">
+  <input name="confidence-financial"><input name="confidence-business"><input name="confidence-digital">
+  <input name="biggest-thing"><input name="notes">
+</form>
+
+<nav>
+  <a href="index.html" class="nav-logo">← Back to Melon 29:7</a>
+  <span class="nav-back">Session 1 Assessment</span>
+</nav>
+
+<div class="intake-header">
+  <div class="intake-badge">Melon 29:7 — SE Framework</div>
+  <h1>Where Are You <em>Right Now?</em></h1>
+  <p>This is not a test. There are no wrong answers. The assessment helps your practitioner understand what's in the way before any coaching begins — and where you are financially, honestly.</p>
+</div>
+
+<div class="progress-bar-wrap">
+  <span class="progress-label" id="prog-label">Getting started</span>
+  <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+  <span class="progress-pct" id="prog-pct">0%</span>
+</div>
+
+<div class="form-body">
+  <div id="main-form">
+
+  <!-- ─── PART 1: WHO YOU ARE ─────────────────────────────────── -->
+  <div class="form-section">
+    <div class="section-tag"><span class="section-num">1</span> About You</div>
+    <h2>Let's start with the basics.</h2>
+    <p>Your information is confidential and is used only by your Melon 29:7 practitioner to prepare for your session.</p>
+
+    <div class="field-row">
+      <div class="field">
+        <label>First Name <span class="req">*</span></label>
+        <input type="text" id="f-first" class="fi" placeholder="First">
+      </div>
+      <div class="field">
+        <label>Last Name <span class="req">*</span></label>
+        <input type="text" id="f-last" class="fi" placeholder="Last">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Email <span class="req">*</span></label>
+        <input type="email" id="f-email" class="fi" placeholder="your@email.com">
+      </div>
+      <div class="field">
+        <label>Phone</label>
+        <input type="tel" id="f-phone" class="fi" placeholder="(555) 000-0000">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>ZIP Code <span class="req">*</span><span class="hint">Helps confirm we serve your area</span></label>
+        <input type="text" id="f-zip" class="fi" placeholder="48197" maxlength="5">
+      </div>
+      <div class="field">
+        <label>Date of Birth <span class="hint">Optional — helps with referral services</span></label>
+        <input type="date" id="f-dob" class="fi">
+      </div>
+    </div>
+
+    <div class="form-divider"></div>
+
+    <div class="field">
+      <label>Which best describes you? <span class="req">*</span></label>
+      <div class="choice-grid cols-2">
+        <label class="choice-card">
+          <input type="radio" name="who-i-am" value="returning-citizen">
+          <div class="choice-label">
+            <span class="choice-mark"></span>
+            <div class="choice-text"><strong>Returning Citizen</strong>Rebuilding after incarceration</div>
+          </div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="who-i-am" value="immigrant">
+          <div class="choice-label">
+            <span class="choice-mark"></span>
+            <div class="choice-text"><strong>Immigrant / New American</strong>Building in a system not designed for me</div>
+          </div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="who-i-am" value="both">
+          <div class="choice-label">
+            <span class="choice-mark"></span>
+            <div class="choice-text"><strong>Both apply to me</strong>My story crosses both paths</div>
+          </div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="who-i-am" value="other">
+          <div class="choice-label">
+            <span class="choice-mark"></span>
+            <div class="choice-text"><strong>Neither, but I need support</strong>Facing barriers most programs don't address</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Where are you in your journey? <span class="req">*</span></label>
+      <div class="choice-grid cols-2">
+        <label class="choice-card">
+          <input type="radio" name="journey-stage" value="idea">
+          <div class="choice-label">
+            <span class="choice-mark"></span>
+            <div class="choice-text"><strong>I have an idea</strong>Exploring whether entrepreneurship is right for me</div>
+          </div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="journey-stage" value="launched">
+          <div class="choice-label">
+            <span class="choice-mark"></span>
+            <div class="choice-text"><strong>I just launched</strong>0–2 years in, building momentum</div>
+          </div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="journey-stage" value="growing">
+          <div class="choice-label">
+            <span class="choice-mark"></span>
+            <div class="choice-text"><strong>Established & growing</strong>Hitting operational or financial walls</div>
+          </div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="journey-stage" value="blocked">
+          <div class="choice-label">
+            <span class="choice-mark"></span>
+            <div class="choice-text"><strong>Blocked right now</strong>Something is in the way and I need help first</div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PART 2: DIAGNOSTIC — SUBSTITUTING CRISES ───────────── -->
+  <div class="form-section">
+    <div class="section-tag"><span class="section-num">2</span> Crisis Screening</div>
+    <h2>What's occupying the space where forward motion should be?</h2>
+    <p>Substitutionary Economics begins here. We need to know what's actually in the way before any business coaching can land. Be honest — this information is used to connect you with the right help first.</p>
+
+    <div class="field">
+      <label>Are you currently facing any active barriers? <span class="req">*</span><span class="hint">Even one active barrier changes what we tackle first</span></label>
+      <div class="choice-grid cols-2">
+        <label class="choice-card">
+          <input type="radio" name="barriers-present" value="yes">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Yes</strong>Something is blocking me right now</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="barriers-present" value="no">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Not right now</strong>I'm in a relatively stable place</div></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="field" id="barrier-detail" style="display:none;">
+      <label>Which of the following are active right now? <span class="hint">Select all that apply — this is not a judgment, it's a starting point</span></label>
+      <div class="choice-grid cols-2">
+        <label class="choice-card checkbox">
+          <input type="checkbox" name="barrier-housing" value="1">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Housing instability</strong>Uncertain or unsafe living situation</div></div>
+        </label>
+        <label class="choice-card checkbox">
+          <input type="checkbox" name="barrier-food" value="1">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Food insecurity</strong>Uncertainty about having enough to eat</div></div>
+        </label>
+        <label class="choice-card checkbox">
+          <input type="checkbox" name="barrier-utility" value="1">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Utility shutoff threat</strong>Risk of losing power, water, or gas</div></div>
+        </label>
+        <label class="choice-card checkbox">
+          <input type="checkbox" name="barrier-banking" value="1">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Banking exclusion</strong>No bank account or blocked from opening one</div></div>
+        </label>
+        <label class="choice-card checkbox">
+          <input type="checkbox" name="barrier-legal" value="1">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Legal / record issues</strong>Background check barriers, record concerns</div></div>
+        </label>
+        <label class="choice-card checkbox">
+          <input type="checkbox" name="barrier-income" value="1">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>No stable income</strong>Income is inconsistent or absent</div></div>
+        </label>
+        <label class="choice-card checkbox">
+          <input type="checkbox" name="barrier-immigration" value="1">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Immigration-related stress</strong>Status uncertainty, documentation gaps</div></div>
+        </label>
+        <label class="choice-card checkbox">
+          <input type="checkbox" name="barrier-mental" value="1">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Mental health / trauma</strong>Unprocessed trauma or emotional weight affecting decisions</div></div>
+        </label>
+        <label class="choice-card checkbox">
+          <input type="checkbox" name="barrier-shame" value="1">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Financial shame</strong>Shame or avoidance around money and finances</div></div>
+        </label>
+        <label class="choice-card checkbox">
+          <input type="checkbox" name="barrier-other" value="1">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Something else</strong>A barrier not listed here</div></div>
+        </label>
+      </div>
+      <div class="field" style="margin-top:16px;margin-bottom:0;">
+        <label>Describe anything you want your practitioner to know before your session. <span class="hint">Optional but valuable</span></label>
+        <textarea id="f-barrier-notes" class="fi" placeholder="You don't have to have it figured out. Just say what's on your mind."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PART 3: FINANCIAL SNAPSHOT ─────────────────────────── -->
+  <div class="form-section">
+    <div class="section-tag"><span class="section-num">3</span> Financial Snapshot</div>
+    <h2>Where do you stand financially — right now, honestly.</h2>
+    <p>This is a baseline. Not a benchmark. Not a judgment. Your practitioner needs to understand your financial picture to know what kind of support will actually help.</p>
+
+    <div class="field">
+      <label>Current employment status <span class="req">*</span></label>
+      <select id="f-employment" class="fi">
+        <option value="">— Select one —</option>
+        <option value="full-time">Full-time employed (W-2)</option>
+        <option value="part-time">Part-time employed</option>
+        <option value="self-employed">Self-employed / gig / freelance</option>
+        <option value="between-jobs">Between jobs / job searching</option>
+        <option value="no-income">No current income</option>
+        <option value="benefits">Benefits / assistance only</option>
+        <option value="multiple">Multiple sources</option>
+      </select>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Estimated monthly take-home income <span class="hint">After taxes. Best guess is fine.</span></label>
+        <select id="f-income-amt" class="fi">
+          <option value="">— Select range —</option>
+          <option value="0">$0 — no income right now</option>
+          <option value="1-500">$1 – $500/month</option>
+          <option value="500-1000">$500 – $1,000/month</option>
+          <option value="1000-2000">$1,000 – $2,000/month</option>
+          <option value="2000-3500">$2,000 – $3,500/month</option>
+          <option value="3500-5000">$3,500 – $5,000/month</option>
+          <option value="5000+">Over $5,000/month</option>
+          <option value="varies">Varies significantly month to month</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Is your income currently stable? <span class="hint">Predictable from month to month</span></label>
+        <select id="f-income-stable" class="fi">
+          <option value="">— Select —</option>
+          <option value="yes">Yes — predictable</option>
+          <option value="somewhat">Somewhat — usually reliable</option>
+          <option value="no">No — inconsistent or uncertain</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-divider"></div>
+
+    <div class="field">
+      <label>Credit score range <span class="hint">Estimate is fine. If you don't know, select "Not sure."</span></label>
+      <div class="choice-grid cols-3">
+        <label class="choice-card">
+          <input type="radio" name="credit-score" value="no-score">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>No score</strong>No credit history</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="credit-score" value="under-580">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Under 580</strong>Needs work</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="credit-score" value="580-669">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>580–669</strong>Fair</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="credit-score" value="670-739">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>670–739</strong>Good</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="credit-score" value="740+">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>740 or higher</strong>Very good / exceptional</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="credit-score" value="unsure">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Not sure</strong>Haven't checked recently</div></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Debt situation <span class="hint">Not asking for amounts — just the general picture</span></label>
+      <div class="choice-grid cols-2">
+        <label class="choice-card">
+          <input type="radio" name="debt-level" value="none">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Little to no debt</strong>Not a significant concern</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="debt-level" value="manageable">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Manageable debt</strong>Have it, handling it</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="debt-level" value="significant">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Significant debt</strong>Feels heavy — affects decisions</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="debt-level" value="collections">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>In collections</strong>Accounts in collections or facing garnishment</div></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Emergency savings — do you have a cushion? <span class="hint">Enough to cover unexpected expenses without crisis</span></label>
+      <div class="choice-grid cols-2">
+        <label class="choice-card">
+          <input type="radio" name="emergency-savings" value="none">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>No savings buffer</strong>An unexpected $200 would be a problem</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="emergency-savings" value="small">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Small buffer</strong>A few hundred dollars, not much</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="emergency-savings" value="some">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Some savings</strong>Could cover a week or two of expenses</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="emergency-savings" value="solid">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Solid emergency fund</strong>1+ month of expenses saved</div></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Banking access <span class="req">*</span></label>
+      <div class="choice-grid cols-2">
+        <label class="choice-card">
+          <input type="radio" name="banking-access" value="checking-savings">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Checking + savings account</strong>Full banking access</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="banking-access" value="checking-only">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Checking account only</strong>No savings account</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="banking-access" value="prepaid-only">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Prepaid card / cash only</strong>No traditional bank account</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="banking-access" value="blocked">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Blocked from banking</strong>ChexSystems or other barrier</div></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Do you have an ITIN (Individual Taxpayer Identification Number)? <span class="hint">Relevant for immigrants without an SSN</span></label>
+      <div class="choice-grid cols-3">
+        <label class="choice-card">
+          <input type="radio" name="itin" value="yes">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Yes</strong></div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="itin" value="no">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>No</strong></div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="itin" value="na">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Not applicable</strong></div></div>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PART 4: BUSINESS VISION ─────────────────────────────── -->
+  <div class="form-section">
+    <div class="section-tag"><span class="section-num">4</span> Business Vision</div>
+    <h2>Tell us about your business or idea.</h2>
+    <p>Even a vague idea counts. Where you are now is the starting point — not a qualification.</p>
+
+    <div class="field">
+      <label>Describe your business idea or current business. <span class="hint">What do you want to build? Who would you serve?</span></label>
+      <textarea id="f-biz-idea" class="fi" rows="4" placeholder="Don't worry about how polished this sounds. Just describe it in your own words."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Business formation status</label>
+      <select id="f-biz-stage" class="fi">
+        <option value="">— Select one —</option>
+        <option value="idea">Idea only — not yet started</option>
+        <option value="operating-informal">Operating informally — not registered</option>
+        <option value="sole-prop">Registered as sole proprietor</option>
+        <option value="llc">LLC formed</option>
+        <option value="corp">Corporation formed</option>
+        <option value="other">Other structure</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>What do you need most right now? <span class="hint">Select the area where you need the most support</span></label>
+      <div class="choice-grid cols-2">
+        <label class="choice-card">
+          <input type="radio" name="business-need" value="stability-first">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Stability first</strong>I need to address barriers before I can focus on business</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="business-need" value="financial-healing">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Financial healing</strong>Understanding my relationship with money</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="business-need" value="business-planning">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Business planning</strong>Plan, pricing, licensing, operations</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="business-need" value="digital-readiness">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Digital readiness</strong>Getting comfortable with business tools</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="business-need" value="capital-access">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Capital access</strong>Funding, credit building, lending readiness</div></div>
+        </label>
+        <label class="choice-card">
+          <input type="radio" name="business-need" value="not-sure">
+          <div class="choice-label"><span class="choice-mark"></span><div class="choice-text"><strong>Not sure yet</strong>I need help figuring out the right starting point</div></div>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PART 5: SELF-ASSESSMENT ──────────────────────────────── -->
+  <div class="form-section">
+    <div class="section-tag"><span class="section-num">5</span> Self-Assessment</div>
+    <h2>How do you feel about the following areas — right now?</h2>
+    <p>Rate your confidence honestly. 1 = very low, 5 = very strong. This helps your practitioner know where to focus energy.</p>
+
+    <div class="field">
+      <label>Financial confidence — your ability to understand and manage your money</label>
+      <div class="scale-wrap">
+        <div class="scale-track" id="scale-financial">
+          <button type="button" class="scale-btn" onclick="setScale('financial',1)">1</button>
+          <button type="button" class="scale-btn" onclick="setScale('financial',2)">2</button>
+          <button type="button" class="scale-btn" onclick="setScale('financial',3)">3</button>
+          <button type="button" class="scale-btn" onclick="setScale('financial',4)">4</button>
+          <button type="button" class="scale-btn" onclick="setScale('financial',5)">5</button>
+        </div>
+        <div class="scale-labels"><span>Very low</span><span>Very strong</span></div>
+      </div>
+      <input type="hidden" id="fv-financial" value="">
+    </div>
+
+    <div class="field" style="margin-top:28px;">
+      <label>Business readiness — your clarity about what you want to build and how</label>
+      <div class="scale-wrap">
+        <div class="scale-track" id="scale-business">
+          <button type="button" class="scale-btn" onclick="setScale('business',1)">1</button>
+          <button type="button" class="scale-btn" onclick="setScale('business',2)">2</button>
+          <button type="button" class="scale-btn" onclick="setScale('business',3)">3</button>
+          <button type="button" class="scale-btn" onclick="setScale('business',4)">4</button>
+          <button type="button" class="scale-btn" onclick="setScale('business',5)">5</button>
+        </div>
+        <div class="scale-labels"><span>Very low</span><span>Very strong</span></div>
+      </div>
+      <input type="hidden" id="fv-business" value="">
+    </div>
+
+    <div class="field" style="margin-top:28px;">
+      <label>Digital confidence — your comfort with computers, apps, and online business tools</label>
+      <div class="scale-wrap">
+        <div class="scale-track" id="scale-digital">
+          <button type="button" class="scale-btn" onclick="setScale('digital',1)">1</button>
+          <button type="button" class="scale-btn" onclick="setScale('digital',2)">2</button>
+          <button type="button" class="scale-btn" onclick="setScale('digital',3)">3</button>
+          <button type="button" class="scale-btn" onclick="setScale('digital',4)">4</button>
+          <button type="button" class="scale-btn" onclick="setScale('digital',5)">5</button>
+        </div>
+        <div class="scale-labels"><span>Very low</span><span>Very strong</span></div>
+      </div>
+      <input type="hidden" id="fv-digital" value="">
+    </div>
+
+    <div class="form-divider"></div>
+
+    <div class="field">
+      <label>What is the single biggest thing standing between you and moving forward? <span class="hint">In your own words. There is no wrong answer.</span></label>
+      <textarea id="f-biggest" class="fi" rows="4" placeholder="Be honest. This is the most important question on this form."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Anything else you want your practitioner to know before your session? <span class="hint">Optional</span></label>
+      <textarea id="f-notes" class="fi" rows="3" placeholder="Additional context, questions, anything on your mind."></textarea>
+    </div>
+  </div>
+
+  </div><!-- end main-form -->
+
+  <!-- SUCCESS -->
+  <div id="success-screen">
+    <div class="success-icon">🌱</div>
+    <h2>Assessment Received.</h2>
+    <p>Your practitioner will review this before your session and reach out within 48 hours to confirm your appointment. This was the right first step.</p>
+    <div class="success-card">
+      <p><strong>What happens next:</strong><br><br>
+      Your practitioner will review your responses, identify what to address first — stability, barriers, or business foundation — and prepare a focused session based on where you actually are.<br><br>
+      If you indicated active barriers, expect a follow-up about community partner referrals before your session begins.</p>
+    </div>
+    <a href="#" class="print-btn" onclick="window.print();return false;">🖨 Print a Copy of Your Assessment</a>
+    <br>
+    <a href="index.html" class="print-btn" style="margin-top:16px;">← Back to Melon 29:7</a>
+  </div>
+</div>
+
+<!-- SUBMIT BAR -->
+<div class="submit-bar" id="submit-bar">
+  <p class="submit-note">Your responses are confidential and used only by your Melon 29:7 practitioner to prepare for your session. Print versions available for in-person completion.</p>
+  <button class="submit-btn" id="submit-btn" onclick="submitForm()">Submit Assessment →</button>
+</div>
+
+<script>
+// ─── Progress tracking ────────────────────────────────────────
+function updateProgress() {
+  const required = ['who-i-am', 'journey-stage', 'barriers-present', 'banking-access'];
+  const textReq = ['f-first', 'f-last', 'f-email', 'f-zip'];
+  const total = required.length + textReq.length;
+  let done = 0;
+  required.forEach(n => { if (document.querySelector(`input[name="${n}"]:checked`)) done++; });
+  textReq.forEach(id => { if (document.getElementById(id)?.value.trim()) done++; });
+  const pct = Math.round((done / total) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-pct').textContent = pct + '%';
+  const labels = ['Getting started','Contact info','Who you are','Barriers','Financial snapshot','Business vision','Final questions'];
+  const idx = Math.min(Math.floor(pct / 17), labels.length - 1);
+  document.getElementById('prog-label').textContent = labels[idx];
+}
+
+// listen for changes
+document.addEventListener('change', updateProgress);
+document.addEventListener('input', updateProgress);
+
+// ─── Barriers toggle ─────────────────────────────────────────
+document.querySelectorAll('input[name="barriers-present"]').forEach(r => {
+  r.addEventListener('change', () => {
+    const el = document.getElementById('barrier-detail');
+    el.style.display = r.value === 'yes' ? 'block' : 'none';
+    if (r.value === 'yes') el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+});
+
+// ─── Scale buttons ────────────────────────────────────────────
+function setScale(key, val) {
+  document.getElementById('fv-' + key).value = val;
+  const track = document.getElementById('scale-' + key);
+  track.querySelectorAll('.scale-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', i < val);
+  });
+  updateProgress();
+}
+
+// ─── Collect barriers ─────────────────────────────────────────
+function collectBarriers() {
+  const names = ['barrier-housing','barrier-food','barrier-utility','barrier-banking',
+                 'barrier-legal','barrier-income','barrier-immigration','barrier-mental',
+                 'barrier-shame','barrier-other'];
+  return names.filter(n => document.querySelector(`input[name="${n}"]:checked`))
+              .map(n => n.replace('barrier-', '')).join(', ');
+}
+
+// ─── Submit ───────────────────────────────────────────────────
+function submitForm() {
+  const first = document.getElementById('f-first').value.trim();
+  const last  = document.getElementById('f-last').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const zip   = document.getElementById('f-zip').value.trim();
+  if (!first || !last || !email || !zip) {
+    alert('Please fill in your name, email, and ZIP code to continue.');
+    return;
+  }
+  const whoIAm = document.querySelector('input[name="who-i-am"]:checked')?.value || '';
+  const stage  = document.querySelector('input[name="journey-stage"]:checked')?.value || '';
+  if (!whoIAm || !stage) {
+    alert('Please complete Part 1 — select who you are and where you are in your journey.');
+    return;
+  }
+
+  const data = new URLSearchParams({
+    'form-name': 'session1-intake',
+    'first': first,
+    'last': last,
+    'email': email,
+    'phone': document.getElementById('f-phone').value.trim(),
+    'zip': zip,
+    'dob': document.getElementById('f-dob').value,
+    'who-i-am': whoIAm,
+    'journey-stage': stage,
+    'barriers-present': document.querySelector('input[name="barriers-present"]:checked')?.value || '',
+    'barriers-list': collectBarriers(),
+    'employment': document.getElementById('f-employment').value,
+    'income-amount': document.getElementById('f-income-amt').value,
+    'income-stable': document.getElementById('f-income-stable').value,
+    'credit-score': document.querySelector('input[name="credit-score"]:checked')?.value || '',
+    'debt-level': document.querySelector('input[name="debt-level"]:checked')?.value || '',
+    'emergency-savings': document.querySelector('input[name="emergency-savings"]:checked')?.value || '',
+    'banking-access': document.querySelector('input[name="banking-access"]:checked')?.value || '',
+    'itin': document.querySelector('input[name="itin"]:checked')?.value || '',
+    'business-idea': document.getElementById('f-biz-idea').value.trim(),
+    'business-stage': document.getElementById('f-biz-stage').value,
+    'business-need': document.querySelector('input[name="business-need"]:checked')?.value || '',
+    'confidence-financial': document.getElementById('fv-financial').value,
+    'confidence-business': document.getElementById('fv-business').value,
+    'confidence-digital': document.getElementById('fv-digital').value,
+    'biggest-thing': document.getElementById('f-biggest').value.trim(),
+    'notes': document.getElementById('f-notes').value.trim(),
+    'barrier-notes': document.getElementById('f-barrier-notes')?.value.trim() || '',
+  });
+
+  document.getElementById('submit-btn').disabled = true;
+  document.getElementById('submit-btn').textContent = 'Submitting…';
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: data.toString()
+  }).then(() => {
+    document.getElementById('main-form').style.display = 'none';
+    document.getElementById('submit-bar').style.display = 'none';
+    document.getElementById('success-screen').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }).catch(() => {
+    document.getElementById('submit-btn').disabled = false;
+    document.getElementById('submit-btn').textContent = 'Submit Assessment →';
+    alert('There was an issue submitting. Please try again or email us at odellp77@gmail.com');
+  });
+}
+</script>
+</body>
+</html>
