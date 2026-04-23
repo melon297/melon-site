@@ -551,14 +551,16 @@
   }
   .footer-col ul li a:hover { color: var(--cream); }
   .footer-bottom {
-    margin-top: 56px;
+    grid-column: 1 / -1;
+    margin-top: 16px;
     border-top: 1px solid rgba(255,255,255,0.1);
-    padding: 20px 64px;
+    padding: 24px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 0.8rem;
     color: rgba(245,240,232,0.3);
+    width: 100%;
   }
   .footer-bottom a { color: var(--coral); text-decoration: none; font-size: 0.8rem; }
 
@@ -590,7 +592,7 @@
     .section-header { flex-direction: column; align-items: flex-start; }
     .mission-banner { padding: 60px 32px; }
     footer { grid-template-columns: 1fr 1fr; padding: 48px 32px; }
-    .footer-bottom { padding: 20px 32px; flex-direction: column; gap: 8px; text-align: center; }
+    .footer-bottom { padding: 16px 0; flex-direction: row; gap: 8px; text-align: left; }
     .testimonials-grid { grid-template-columns: 1fr; }
     /* Inline-styled sections */
     #about-story { grid-template-columns: 1fr !important; padding: 80px 32px !important; gap: 48px !important; }
@@ -615,7 +617,7 @@
     .dual-cta { grid-template-columns: 1fr; }
     .cta-panel { padding: 48px 20px; }
     footer { grid-template-columns: 1fr !important; padding: 48px 20px !important; }
-    .footer-bottom { padding: 20px; }
+    .footer-bottom { padding: 12px 0; flex-direction: row; }
     /* Inline-styled sections */
     #about-story { grid-template-columns: 1fr !important; padding: 60px 20px !important; gap: 32px !important; }
     #about-story > div:last-child { flex-direction: column !important; }
@@ -852,7 +854,7 @@
   <div class="cta-panel for-entrepreneurs">
     <div class="cta-label">For Entrepreneurs</div>
     <h2>Locked Out of the Mainstream? This is Built For You.</h2>
-    <p>If you're building a business in a financial system that wasn't designed for you — Melon 29:7 is where you start. We address what's actually in the way before we hand you a business plan template. Free services. Real support. Open door.</p>
+    <p>Tell us your story. Whether you want to launch a business or earn a certification, we build a path around your goal — not the other way around. Free services. Real support. No intake form between you and someone who actually picks up the phone.</p>
     <a href="#contact" class="btn-coral-outline">Sign Up for Free Services</a>
   </div>
 </section>
