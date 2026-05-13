@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Melon 29:7 — From the Margins to the Market | SE Michigan</title>
+<title>Melon 29:7 — Where Hustle Becomes a Fundable Business | SE Michigan</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2712%27%20fill%3D%27%23e8503a%27%2F%3E%3Cpath%20d%3D%27M12%2048%20Q32%206%2052%2048%20Z%27%20fill%3D%27none%27%20stroke%3D%27white%27%20stroke-width%3D%273.5%27%20stroke-linejoin%3D%27round%27%2F%3E%3Cpath%20d%3D%27M17%2048%20Q32%2013%2047%2048%27%20fill%3D%27none%27%20stroke%3D%27white%27%20stroke-width%3D%272%27%20opacity%3D%270.7%27%2F%3E%3Cellipse%20cx%3D%2726%27%20cy%3D%2736%27%20rx%3D%272.2%27%20ry%3D%273.2%27%20fill%3D%27white%27%20transform%3D%27rotate%28-20%2026%2036%29%27%2F%3E%3Cellipse%20cx%3D%2732%27%20cy%3D%2732%27%20rx%3D%272.2%27%20ry%3D%273.2%27%20fill%3D%27white%27%2F%3E%3Cellipse%20cx%3D%2738%27%20cy%3D%2736%27%20rx%3D%272.2%27%20ry%3D%273.2%27%20fill%3D%27white%27%20transform%3D%27rotate%2820%2038%2036%29%27%2F%3E%3Cline%20x1%3D%2712%27%20y1%3D%2748%27%20x2%3D%2752%27%20y2%3D%2748%27%20stroke%3D%27white%27%20stroke-width%3D%273.5%27%20stroke-linecap%3D%27round%27%2F%3E%3C%2Fsvg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -122,13 +122,24 @@
   }
   .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 5vw, 5rem);
+    font-size: clamp(2.6rem, 5.5vw, 4.8rem);
     font-weight: 900;
     color: var(--green);
     line-height: 1.05;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
   }
-  .hero h1 em { font-style: italic; color: var(--coral); }
+  .hero h1 em { font-style: normal; color: var(--coral); }
+  .hero-deck {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+    font-weight: 500;
+    color: var(--green);
+    line-height: 1.45;
+    max-width: 580px;
+    margin-bottom: 40px;
+  }
+  .hero-deck em { color: var(--coral); font-style: italic; }
   .hero-sub {
     color: var(--text-muted);
     font-size: 1.1rem;
@@ -596,7 +607,7 @@
     .testimonials-grid { grid-template-columns: 1fr; }
     .programs-verticals-grid { grid-template-columns: 1fr !important; }
     /* Inline-styled sections */
-    #about-story { grid-template-columns: 1fr !important; padding: 80px 32px !important; gap: 48px !important; }
+    #about-story { padding: 80px 32px !important; }
     #donate { padding: 80px 32px !important; }
     #donate > div:last-of-type { grid-template-columns: 1fr !important; }
     #contact { padding: 60px 32px !important; }
@@ -620,10 +631,7 @@
     footer { grid-template-columns: 1fr !important; padding: 48px 20px !important; }
     .footer-bottom { padding: 12px 0; flex-direction: row; }
     /* Inline-styled sections */
-    #about-story { grid-template-columns: 1fr !important; padding: 60px 20px !important; gap: 32px !important; }
-    #about-story > div:last-child { flex-direction: column !important; }
-    #about-story > div:last-child > div { padding: 28px 24px !important; }
-    #about-story > div:last-child > div > div:first-child { font-size: 2rem !important; }
+    #about-story { padding: 60px 20px !important; }
     section[style*="background:var(--green)"][style*="padding:100px"] { padding: 60px 20px !important; }
     #donate { padding: 60px 20px !important; }
     #donate > div[style*="z-index:2"][style*="margin-bottom"] { margin-bottom: 48px !important; }
@@ -686,8 +694,8 @@
 <section class="hero">
   <div class="hero-left">
 
-    <h1>From the Margins <em>to the Market</em></h1>
-    <p class="hero-sub">Melon 29:7 is a preparation platform. We walk entrepreneurs from wherever they are to the place where opportunity can actually reach them — registered, banked, educated, and digitally present before the next door opens. The hustle was already there. We build what was missing around it.</p>
+    <h1>The hustle was the easy part.</h1>
+    <p class="hero-deck">Preparing <em>entrepreneurs</em> to be found and funded when opportunity arises.</p>
     <div class="hero-btns">
       <a href="#contact" class="btn-primary">Sign Up for Services</a>
       <a href="#donate" class="btn-secondary">Fund the Work →</a>
@@ -775,44 +783,24 @@ function submitContact() {
 }
 </script>
 
-<section id="about" class="dual-cta">
-  <div class="cta-panel for-funders">
-    <div class="cta-label">For Sponsors &amp; Partners</div>
-    <h2>Join the Mission</h2>
-    <p>Melon 29:7 partners with organizations and individuals who believe economic inclusion is not charity — it's strategy. Your support directly funds education and digital inclusion programming for entrepreneurs who've been locked out of mainstream economic opportunity. We don't just train — we deploy. Walk alongside us.</p>
-    <a href="#donate" class="btn-green">Partner With Us</a>
-  </div>
-  <div class="cta-panel for-entrepreneurs">
-    <div class="cta-label">For Entrepreneurs</div>
-    <h2>The Hustle Was Already There.</h2>
-    <p>Melon 29:7 builds the infrastructure around it — registration, banking, money readiness, a business model, a website, certifications. In the right order, at no cost to Launch Pad participants. Legacy clients start with a conversation about what they actually have and where it needs to go.</p>
-    <a href="#contact" class="btn-coral-outline">Get Started</a>
+<section id="about" style="background:var(--cream);padding:120px 64px;">
+  <div style="max-width:720px;margin:0 auto;text-align:center;">
+    <div class="cta-label" style="margin-bottom:20px;">For Sponsors &amp; Partners</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--green);line-height:1.2;margin-bottom:20px;">Join the Mission</h2>
+    <p style="font-size:1rem;line-height:1.75;color:var(--text-muted);margin:0 auto 36px;max-width:560px;font-weight:300;">Melon 29:7 partners with organizations and individuals who approach economic inclusion as strategy. Through this work, entrepreneurs build the infrastructure that turns hustle into a fundable business — and established business owners build the operational and capital readiness their next move requires. The conversation starts with what you want your capital to accomplish and how fast it needs to move.</p>
+    <a href="#contact" class="btn-green">Start the Conversation</a>
   </div>
 </section>
 
 
 <!-- ABOUT -->
-<section id="about-story" style="background:var(--cream);padding:120px 64px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
-  <div>
+<section id="about-story" style="background:var(--cream);padding:120px 64px;">
+  <div style="max-width:720px;margin:0;">
     <div class="section-eyebrow">About Melon 29:7</div>
-    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3rem);font-weight:700;color:var(--green);line-height:1.2;margin-bottom:24px;">Accompaniment, Not Charity</h2>
-    <p style="color:rgba(17,17,17,0.65);font-size:1rem;line-height:1.8;font-weight:300;margin-bottom:20px;">Melon 29:7 SE Michigan was founded by Odell Palacio — immigrant from Panama, raised by a single mother, and someone for whom financial exclusion has never been abstract. It has been a household reality. The work of Melon 29:7 is not charity delivered from a place of arrival. It is accompaniment offered from a place of shared journey.</p>
-    <p style="color:rgba(17,17,17,0.65);font-size:1rem;line-height:1.8;font-weight:300;margin-bottom:20px;">Odell brings nearly three decades across banking, real estate, and community economic development — including foreclosure and redemption period transactions and nearly four years of direct community economic development work in Southeast Michigan, where he provided one-on-one business coaching, facilitated financial readiness workshops, and developed the Substitutionary Economics framework through practice with reentry and immigrant entrepreneurs.</p>
-    <p style="color:rgba(17,17,17,0.65);font-size:1rem;line-height:1.8;font-weight:300;">Melon 29:7 is not a new experiment. It is the formalization of a model already tested in practice — built specifically to serve people most excluded from mainstream entrepreneurship support.</p>
-  </div>
-  <div style="display:flex;flex-direction:column;gap:20px;">
-    <div style="background:var(--green);border-radius:20px;padding:36px 40px;">
-      <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--coral);line-height:1;margin-bottom:8px;">3 decades</div>
-      <div style="color:rgba(245,240,232,0.75);font-size:0.9rem;font-weight:300;line-height:1.5;">Across banking, real estate, and community economic development — from branch management to micro-lending decisions</div>
-    </div>
-    <div style="background:var(--cream-dark);border-radius:20px;padding:36px 40px;">
-      <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--green);line-height:1;margin-bottom:8px;">Proven Track Record</div>
-      <div style="color:rgba(17,17,17,0.6);font-size:0.9rem;font-weight:300;line-height:1.5;">Built corporate and community partnerships with major SE Michigan institutions during a decade of direct economic development work — from energy companies to trusted social service organizations.</div>
-    </div>
-    <div style="background:var(--coral);border-radius:20px;padding:36px 40px;">
-      <div style="font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--white);line-height:1;margin-bottom:8px;">Jeremiah 29:7</div>
-      <div style="color:rgba(255,255,255,0.8);font-size:0.9rem;font-weight:300;line-height:1.5;">The founding conviction: individual entrepreneurial success and community economic health are not separate goals. Seek the prosperity of the city.</div>
-    </div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.5vw,3rem);font-weight:700;color:var(--green);line-height:1.2;margin-bottom:24px;">Why It Works</h2>
+    <p style="color:rgba(17,17,17,0.65);font-size:1rem;line-height:1.8;font-weight:300;margin-bottom:20px;">Melon 29:7 is a preparation platform built to function across two operational verticals — Launch Pad for entrepreneurs at the start of formalization, and Legacy for established business owners stabilizing, scaling, or preparing for transition. Both lanes run through the same infrastructure: registered businesses, banking relationships, money readiness, and digital presence in the right order, not as standalone services.</p>
+    <p style="color:rgba(17,17,17,0.65);font-size:1rem;line-height:1.8;font-weight:300;margin-bottom:20px;">Founded and led by Odell Palacio, Melon brings over two decades of practitioner experience across retail banking, real estate, and community economic development — branch management, micro-lending decisions, foreclosure and redemption transactions, and corporate-community partnership development with major SE Michigan institutions.</p>
+    <p style="color:rgba(17,17,17,0.65);font-size:1rem;line-height:1.8;font-weight:300;">Melon 29:7 is the formalization of a model already tested in practice. The operational track record — coaching delivered, businesses launched, capital deployed, and corporate partnerships built — establishes the scope. The platform is ready to expand.</p>
   </div>
 </section>
 
