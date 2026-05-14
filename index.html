@@ -682,7 +682,7 @@
 <body>
 
 <!-- Netlify Forms (hidden — required for form discovery) -->
-<form name="booking" data-netlify="true" hidden><input name="first"><input name="last"><input name="email"><input name="phone"><input name="business"><input name="notes"><input name="who"><input name="stage"><input name="need"></form>
+<form name="contact" data-netlify="true" hidden><input name="first"><input name="last"><input name="email"><input name="phone"><input name="business"><input name="track"><input name="notes"></form>
 <form name="donation" data-netlify="true" hidden><input name="first"><input name="last"><input name="email"><input name="amount"><input name="note"></form>
 <form name="corporate-partner" data-netlify="true" hidden><input name="name"><input name="org"><input name="email"><input name="phone"><input name="goals"></form>
 
@@ -776,6 +776,8 @@
 
     <div style="background:white;border-radius:24px;padding:56px;box-shadow:0 4px 40px rgba(0,0,0,0.07);">
 
+      <div id="contact-form-content">
+
       <!-- TRACK SELECTOR -->
       <div style="margin-bottom:36px;">
         <div style="font-size:0.8rem;font-weight:600;color:var(--green);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">Which track fits you?</div>
@@ -805,9 +807,13 @@
       <button onclick="submitContact()" style="width:100%;background:var(--green);color:white;border:none;padding:18px 32px;border-radius:14px;font-size:1rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s;" onmouseover="this.style.background='var(--green-mid)'" onmouseout="this.style.background='var(--green)'">Send My Information →</button>
       <p style="text-align:center;color:rgba(17,17,17,0.4);font-size:0.85rem;margin-top:16px;">No payment required. Legacy service fees are discussed during our first conversation.</p>
 
+      </div>
+
       <!-- SUCCESS -->
       <div id="contact-success" style="display:none;text-align:center;padding:40px 20px;">
-        <div style="font-size:3rem;margin-bottom:16px;">✅</div>
+        <div style="margin:0 auto 20px;width:64px;height:64px;border-radius:50%;background:var(--green-tint);display:flex;align-items:center;justify-content:center;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
         <h4 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--green);margin-bottom:12px;">We Got You.</h4>
         <p style="color:rgba(17,17,17,0.6);font-size:0.95rem;line-height:1.7;">Expect to hear from us within 48 hours. We'll confirm your track and set up a first conversation.</p>
       </div>
@@ -840,7 +846,7 @@ function submitContact() {
     'notes': document.getElementById('con-notes').value.trim()
   });
   fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: payload.toString() }).catch(()=>{});
-  document.querySelector('#contact .bg-white, #contact > div > div:last-child').style.display = 'none';
+  document.getElementById('contact-form-content').style.display = 'none';
   document.getElementById('contact-success').style.display = 'block';
 }
 </script>
@@ -908,47 +914,60 @@ function submitContact() {
 <section class="spotlight" style="border-top:4px solid var(--cream-dark);">
   <div class="spotlight-left">
     <div class="section-eyebrow">Our Differentiator</div>
-    <h2>Every Entrepreneur Needs a Team.</h2>
-    <p>We start with a simple question: tell me your story. From there, we tailor your path — specifically to the business you want to build, the certification you want to earn, or the barrier that is standing in the way. No templates handed to strangers. No one-size curriculum. Just a plan that actually fits.</p>
+    <h2>Different doors. Same spine.</h2>
+    <p>Launch Pad and Legacy walk in through different doors — the first for new entrepreneurs building registration, banking, and digital presence from scratch, the second for established owners stabilizing, scaling, or preparing for transition. The spine is the same: money readiness scoped to the situation, one-on-one coaching, a vetted network for whatever comes next, and an open door when life shifts.</p>
+    <p>No templates. A plan that fits the person in front of us.</p>
     <a href="#contact" class="btn-primary">Get Started</a>
   </div>
   <div class="spotlight-right">
-    <div class="feature-item">
-      <div class="feature-icon">🧩</div>
-      <div class="feature-text">
-        <h4>Money Readiness First</h4>
-        <p>Every Launch Pad participant begins with a money readiness assessment — scoped to their specific situation — before any business curriculum is delivered. You cannot build on a foundation you have not seen.</p>
+
+    <!-- FOR LAUNCH PAD -->
+    <div style="margin-bottom:40px;">
+      <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--coral);padding-bottom:14px;border-bottom:2px solid var(--cream-dark);margin-bottom:24px;">For Launch Pad</div>
+      <div style="display:flex;flex-direction:column;gap:22px;">
+        <div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--green);margin-bottom:6px;">Money Readiness, Scoped to You</h4>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.65;font-weight:300;">Every plan begins with a money readiness assessment built around your situation — before any business curriculum is delivered.</p>
+        </div>
+        <div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--green);margin-bottom:6px;">Registration and Banking, Done Together</h4>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.65;font-weight:300;">LARA filings, EIN, and warm referrals to low-barrier business banking partners. The paperwork happens with us, not as homework.</p>
+        </div>
+        <div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--green);margin-bottom:6px;">A Website You Own</h4>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.65;font-weight:300;">Custom website built by Melon, owned by you. Verizon Digital Ready curriculum runs alongside — industry-specific, grant eligible.</p>
+        </div>
+        <div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--green);margin-bottom:6px;">Steady-Income Floor</h4>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.65;font-weight:300;">Stable income managed with intention is a wealth-building tool. Our free weekly job board covers Southeast Michigan.</p>
+          <a href="/jobs" style="display:inline-block;margin-top:8px;color:var(--coral);font-weight:600;font-size:0.88rem;text-decoration:none;">Browse Open Jobs →</a>
+        </div>
       </div>
     </div>
-    <div class="feature-item">
-      <div class="feature-icon">🤝</div>
-      <div class="feature-text">
-        <h4>One-on-One Coaching</h4>
-        <p>Direct, individualized technical assistance — adapted to each entrepreneur's specific situation, stage, and goals. We meet people where they are.</p>
+
+    <!-- FOR LEGACY -->
+    <div>
+      <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--coral);padding-bottom:14px;border-bottom:2px solid var(--cream-dark);margin-bottom:24px;">For Legacy</div>
+      <div style="display:flex;flex-direction:column;gap:22px;">
+        <div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--green);margin-bottom:6px;">Capital and Loan Readiness</h4>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.65;font-weight:300;">Loan packages, capital readiness audits, and lender introductions for the next stage of growth or transition.</p>
+        </div>
+        <div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--green);margin-bottom:6px;">Certification Navigation</h4>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.65;font-weight:300;">The right certification connected to the right organization — WOSB, MBE, MWBE, ACDBE — matched to what your business actually needs.</p>
+        </div>
+        <div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--green);margin-bottom:6px;">RFP and Grant Preparation</h4>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.65;font-weight:300;">Specification analysis, compliance gap identification, and submission support for the contracts that move the business forward.</p>
+        </div>
+        <div>
+          <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--green);margin-bottom:6px;">Transition Support</h4>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.65;font-weight:300;">Sale, succession, and acquisition coaching. Buyer matching, exit planning, and the team to walk the handoff through.</p>
+        </div>
       </div>
     </div>
-    <div class="feature-item">
-      <div class="feature-icon">💻</div>
-      <div class="feature-text">
-        <h4>Digital Presence — Built and Owned</h4>
-        <p>Launch Pad participants receive a custom website built by Melon and owned by them. Digital skills through Verizon Digital Ready, grant eligible. You leave with assets, not just awareness.</p>
-      </div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon">🚪</div>
-      <div class="feature-text">
-        <h4>The Open Door</h4>
-        <p>Entrepreneurship is not linear. Melon 29:7 welcomes alumni back when new challenges arise. Graduated clients may continue with services through a modest fee structure — sustaining the program while deepening the relationship.</p>
-      </div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon">💼</div>
-      <div class="feature-text">
-        <h4>Employment as a Pillar</h4>
-        <p>Stable income — managed with intention — is a wealth building tool. For clients who need that foundation while they build, we maintain a free weekly job board covering Southeast Michigan.</p>
-        <a href="/jobs" style="display:inline-block;margin-top:12px;color:var(--coral);font-weight:600;font-size:0.9rem;text-decoration:none;">Browse Open Jobs →</a>
-      </div>
-    </div>
+
   </div>
 </section>
 
@@ -962,27 +981,27 @@ function submitContact() {
     <!-- Cards -->
     <div id="val-carousel" style="position:relative;min-height:220px;">
       <div class="val-card val-active" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:20px;padding:40px 36px;text-align:center;">
-        <div style="font-size:2.2rem;margin-bottom:18px;">🫂</div>
+        <div style="margin:0 auto 18px;width:48px;height:48px;border-radius:50%;background:rgba(232,80,58,0.18);border:1px solid rgba(232,80,58,0.4);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--coral);letter-spacing:0.04em;">01</div>
         <h4 style="font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--cream);margin-bottom:12px;">Accompaniment Over Charity</h4>
         <p style="color:rgba(245,240,232,0.65);font-size:0.9rem;line-height:1.75;font-weight:300;">The Founder is part of the work, not apart from it. We walk alongside — not above.</p>
       </div>
       <div class="val-card" style="display:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:20px;padding:40px 36px;text-align:center;">
-        <div style="font-size:2.2rem;margin-bottom:18px;">💚</div>
+        <div style="margin:0 auto 18px;width:48px;height:48px;border-radius:50%;background:rgba(232,80,58,0.18);border:1px solid rgba(232,80,58,0.4);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--coral);letter-spacing:0.04em;">02</div>
         <h4 style="font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--cream);margin-bottom:12px;">Trauma-Informed Practice</h4>
         <p style="color:rgba(245,240,232,0.65);font-size:0.9rem;line-height:1.75;font-weight:300;">Financial behavior cannot be changed without first understanding the experiences that shaped it.</p>
       </div>
       <div class="val-card" style="display:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:20px;padding:40px 36px;text-align:center;">
-        <div style="font-size:2.2rem;margin-bottom:18px;">⚡</div>
+        <div style="margin:0 auto 18px;width:48px;height:48px;border-radius:50%;background:rgba(232,80,58,0.18);border:1px solid rgba(232,80,58,0.4);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--coral);letter-spacing:0.04em;">03</div>
         <h4 style="font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--cream);margin-bottom:12px;">Preparation Before Access</h4>
         <p style="color:rgba(245,240,232,0.65);font-size:0.9rem;line-height:1.75;font-weight:300;">A cash injection without preparation is temporary. Financial education without infrastructure is incomplete. Melon builds both — in the right order, before the next door opens.</p>
       </div>
       <div class="val-card" style="display:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:20px;padding:40px 36px;text-align:center;">
-        <div style="font-size:2.2rem;margin-bottom:18px;">🌱</div>
+        <div style="margin:0 auto 18px;width:48px;height:48px;border-radius:50%;background:rgba(232,80,58,0.18);border:1px solid rgba(232,80,58,0.4);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--coral);letter-spacing:0.04em;">04</div>
         <h4 style="font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--cream);margin-bottom:12px;">Sustainability Over Dependency</h4>
         <p style="color:rgba(245,240,232,0.65);font-size:0.9rem;line-height:1.75;font-weight:300;">Melon 29:7 is designed to sustain itself through earned revenue and contracts, not grants alone.</p>
       </div>
       <div class="val-card" style="display:none;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:20px;padding:40px 36px;text-align:center;">
-        <div style="font-size:2.2rem;margin-bottom:18px;">📍</div>
+        <div style="margin:0 auto 18px;width:48px;height:48px;border-radius:50%;background:rgba(232,80,58,0.18);border:1px solid rgba(232,80,58,0.4);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--coral);letter-spacing:0.04em;">05</div>
         <h4 style="font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--cream);margin-bottom:12px;">Place-Based Commitment</h4>
         <p style="color:rgba(245,240,232,0.65);font-size:0.9rem;line-height:1.75;font-weight:300;">We are rooted in Southeast Michigan. Our success is measured by what this community becomes.</p>
       </div>
@@ -1091,7 +1110,6 @@ function submitContact() {
 
     <!-- DONATE PANEL -->
     <div style="background:var(--cream);border-radius:24px;padding:52px 44px;display:flex;flex-direction:column;">
-      <div style="font-size:2.5rem;margin-bottom:20px;">🌱</div>
       <div style="font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--coral);margin-bottom:12px;">For Foundations &amp; Individuals</div>
       <h3 style="font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--green);line-height:1.2;margin-bottom:16px;">Donate to Melon</h3>
       <p style="color:rgba(17,17,17,0.65);font-size:0.95rem;line-height:1.7;font-weight:300;margin-bottom:32px;flex:1;">Your gift directly funds education and digital inclusion programming — for the entrepreneurs most systems overlook. Every skill we teach leads somewhere. Tax-deductible. All amounts welcome.</p>
@@ -1100,7 +1118,6 @@ function submitContact() {
 
     <!-- CORPORATE PARTNER PANEL -->
     <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:24px;padding:52px 44px;display:flex;flex-direction:column;">
-      <div style="font-size:2.5rem;margin-bottom:20px;">🤝</div>
       <div style="font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--coral);margin-bottom:12px;">For Corporations &amp; Businesses</div>
       <h3 style="font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:16px;">Become a Corporate Partner</h3>
       <p style="color:rgba(245,240,232,0.6);font-size:0.95rem;line-height:1.7;font-weight:300;margin-bottom:32px;flex:1;">Corporate partnerships fund program infrastructure, cohort delivery, and long-term capacity. Partners receive visibility, community trust, and the satisfaction of directly expanding economic inclusion in Southeast Michigan. Inquiries via check or formal agreement — let's talk.</p>
@@ -1113,8 +1130,7 @@ function submitContact() {
 <!-- DONATE MODAL -->
 <div id="donate-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9000;align-items:center;justify-content:center;padding:20px;">
   <div style="background:white;border-radius:24px;padding:52px 48px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;position:relative;">
-    <button onclick="closeDonateModal()" style="position:absolute;top:20px;right:24px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:rgba(17,17,17,0.4);">✕</button>
-    <div style="font-size:2rem;margin-bottom:16px;">🌱</div>
+    <button onclick="closeDonateModal()" aria-label="Close" style="position:absolute;top:20px;right:24px;background:none;border:none;font-size:1.75rem;line-height:1;cursor:pointer;color:rgba(17,17,17,0.4);font-family:inherit;">×</button>
     <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--green);margin-bottom:8px;">I Want to Give</h3>
     <p style="color:rgba(17,17,17,0.55);font-size:0.9rem;margin-bottom:8px;line-height:1.7;">Let us know you're interested in giving and our team will follow up with secure payment details. No credit card information is collected here.</p>
     <div id="donate-form-wrap">
@@ -1138,7 +1154,9 @@ function submitContact() {
       <p style="text-align:center;color:rgba(17,17,17,0.4);font-size:0.8rem;margin-top:12px;">Melon 29:7 will reach out within 24 hours with secure payment options.</p>
     </div>
     <div id="donate-success" style="display:none;text-align:center;padding:20px 0;">
-      <div style="font-size:3rem;margin-bottom:16px;">🙏</div>
+      <div style="margin:0 auto 20px;width:64px;height:64px;border-radius:50%;background:rgba(232,80,58,0.15);display:flex;align-items:center;justify-content:center;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
       <h4 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--green);margin-bottom:12px;">Message Received.</h4>
       <p style="color:rgba(17,17,17,0.6);font-size:0.95rem;line-height:1.7;">Our team will be in touch within 24 hours with secure payment details and a note about how your gift will be used. You're part of this now.</p>
     </div>
@@ -1148,8 +1166,7 @@ function submitContact() {
 <!-- CORPORATE PARTNER MODAL -->
 <div id="partner-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9000;align-items:center;justify-content:center;padding:20px;">
   <div style="background:white;border-radius:24px;padding:52px 48px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;position:relative;">
-    <button onclick="closePartnerModal()" style="position:absolute;top:20px;right:24px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:rgba(17,17,17,0.4);">✕</button>
-    <div style="font-size:2rem;margin-bottom:16px;">🤝</div>
+    <button onclick="closePartnerModal()" aria-label="Close" style="position:absolute;top:20px;right:24px;background:none;border:none;font-size:1.75rem;line-height:1;cursor:pointer;color:rgba(17,17,17,0.4);font-family:inherit;">×</button>
     <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--green);margin-bottom:8px;">Corporate Partnership Inquiry</h3>
     <p style="color:rgba(17,17,17,0.55);font-size:0.9rem;margin-bottom:32px;line-height:1.7;">Tell us about your organization and what you're looking for. We'll follow up to explore the right partnership structure.</p>
     <div id="partner-form-wrap">
@@ -1162,7 +1179,9 @@ function submitContact() {
       <p style="text-align:center;color:rgba(17,17,17,0.4);font-size:0.8rem;margin-top:12px;">This will open your email client addressed to the Melon 29:7 team directly.</p>
     </div>
     <div id="partner-success" style="display:none;text-align:center;padding:20px 0;">
-      <div style="font-size:3rem;margin-bottom:16px;">✅</div>
+      <div style="margin:0 auto 20px;width:64px;height:64px;border-radius:50%;background:var(--green-tint);display:flex;align-items:center;justify-content:center;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
       <h4 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--green);margin-bottom:12px;">Inquiry Received.</h4>
       <p style="color:rgba(17,17,17,0.6);font-size:0.95rem;line-height:1.7;">Thank you for your interest. The Melon 29:7 team will be in touch within a few business days to explore the right partnership structure together.</p>
     </div>
