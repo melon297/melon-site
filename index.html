@@ -631,32 +631,66 @@
   @media (max-width: 600px) {
     nav { padding: 14px 20px; }
     .nav-logo img { height: 28px; }
-    .hero-left { padding: 100px 20px 48px; }
+
+    /* Center all section content by default */
+    section { text-align: center; }
+    section [style*="max-width"] { margin-left: auto !important; margin-right: auto !important; }
+    section [style*="text-align:left"] { text-align: center !important; }
+
+    /* Hero — centered, balanced */
+    .hero-left {
+      padding: 96px 20px 48px;
+      align-items: center;
+      text-align: center;
+      margin: 0 auto;
+    }
     .hero-left h1 { font-size: clamp(2rem, 8vw, 3rem); }
-    .hero-sub { font-size: 0.95rem; }
-    .hero-btns { flex-direction: column; gap: 12px; }
-    .btn-primary, .btn-secondary { text-align: center; }
+    .hero-tag { margin-left: auto; margin-right: auto; }
+    .hero-deck { margin-left: auto; margin-right: auto; }
+    .hero-sub { font-size: 0.95rem; margin-left: auto; margin-right: auto; }
+    .hero-btns { flex-direction: column; gap: 12px; align-items: center; width: 100%; }
+    .btn-primary, .btn-secondary { text-align: center; width: 100%; max-width: 320px; }
+
+    /* Consistent vertical rhythm — 48px standard, 56px for major sections */
     .mission-banner { padding: 48px 20px; }
     .mission-banner p { font-size: clamp(1rem, 4vw, 1.4rem); }
-    .what-we-do, .testimonials { padding: 60px 20px; }
-    .spotlight { padding: 60px 20px; gap: 36px; }
+    .what-we-do, .testimonials { padding: 56px 20px; }
+    .spotlight { padding: 56px 20px; gap: 32px; }
     .dual-cta { grid-template-columns: 1fr; }
-    .cta-panel { padding: 48px 20px; }
-    footer { grid-template-columns: 1fr !important; padding: 48px 20px !important; }
-    .footer-bottom { padding: 12px 0; flex-direction: row; }
-    /* Inline-styled sections */
-    #about-story { padding: 60px 20px !important; }
-    section[style*="background:var(--green)"][style*="padding:100px"] { padding: 60px 20px !important; }
-    #donate { padding: 60px 20px !important; }
-    #donate > div[style*="z-index:2"][style*="margin-bottom"] { margin-bottom: 48px !important; }
-    #donate > div:last-of-type { grid-template-columns: 1fr !important; gap: 20px !important; }
-    #donate > div:last-of-type > div { padding: 36px 28px !important; }
-    #contact { padding: 48px 20px !important; }
-    #booking-wizard { padding: 28px 20px !important; }
-    #booking-wizard h3 { font-size: 1.4rem !important; }
-    #step-4 > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
-    .testimonial-card { padding: 32px 24px; }
+    .cta-panel { padding: 48px 20px; text-align: center; }
+
+    /* Section headers — center the whole block */
+    .section-header { align-items: center !important; text-align: center; }
     .section-header h2 { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+
+    /* Center inline-styled flex containers (logos, button rows, etc.) */
+    section div[style*="display:flex"] { justify-content: center; }
+
+    /* Footer — center each stacked column, strip bullets */
+    footer { grid-template-columns: 1fr !important; padding: 48px 20px !important; text-align: center; gap: 32px; }
+    .footer-brand { text-align: center; }
+    .footer-col { text-align: center; }
+    .footer-col ul { padding: 0; list-style: none; margin: 0; }
+    .footer-col li { margin: 8px 0; }
+    .footer-bottom { padding: 16px 0; flex-direction: column; gap: 10px; text-align: center; }
+
+    /* Inline-styled sections — tighter, centered */
+    #about-story { padding: 56px 20px !important; }
+    section[style*="background:var(--green)"][style*="padding:100px"] { padding: 56px 20px !important; }
+    #donate { padding: 56px 20px !important; }
+    #donate > div[style*="z-index:2"][style*="margin-bottom"] { margin-bottom: 40px !important; }
+    #donate > div:last-of-type { grid-template-columns: 1fr !important; gap: 16px !important; }
+    #donate > div:last-of-type > div { padding: 32px 24px !important; }
+    #contact { padding: 48px 20px !important; }
+
+    /* Booking wizard — keep form inputs left-aligned inside, but center surrounding text */
+    #booking-wizard { padding: 28px 20px !important; text-align: center; }
+    #booking-wizard h3 { font-size: 1.4rem !important; }
+    #booking-wizard input, #booking-wizard textarea, #booking-wizard select { text-align: left; }
+    #booking-wizard label { text-align: left; }
+    #step-4 > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+
+    .testimonial-card { padding: 32px 24px; text-align: center; }
   }
 
 .wiz-options { display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px; }
