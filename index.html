@@ -796,6 +796,7 @@
 
 <!-- Netlify Forms (hidden — required for form discovery) -->
 <form name="contact" data-netlify="true" hidden><input name="first"><input name="last"><input name="email"><input name="phone"><input name="business"><input name="track"><input name="notes"></form>
+<form name="booking" data-netlify="true" hidden><input name="first"><input name="last"><input name="email"><input name="phone"><input name="business"><input name="notes"><input name="who"><input name="stage"><input name="need"></form>
 <form name="donation" data-netlify="true" hidden><input name="first"><input name="last"><input name="email"><input name="amount"><input name="note"></form>
 <form name="corporate-partner" data-netlify="true" hidden><input name="name"><input name="org"><input name="email"><input name="phone"><input name="goals"></form>
 
@@ -1420,18 +1421,12 @@ function submitPartner() {
   const email=document.getElementById('par-email').value.trim();
   const phone=document.getElementById('par-phone').value.trim();
   const goals=document.getElementById('par-goals').value.trim();
-  if (!name) { alert('Please enter your name before sending.'); return; }
-  const subject=encodeURIComponent('Corporate Partnership Inquiry — Melon 29:7');
-  const body=encodeURIComponent(
-    'Hello Odell,\n\nI\'m reaching out about a potential corporate partnership with Melon 29:7.\n\n'
-    +'Name: '+name+'\n'
-    +(org?'Organization: '+org+'\n':'')
-    +(email?'Email: '+email+'\n':'')
-    +(phone?'Phone: '+phone+'\n':'')
-    +(goals?'\nPartnership Goals:\n'+goals+'\n':'')
-    +'\nLooking forward to connecting.'
-  );
-  window.location.href='mailto:odellp77@gmail.com?subject='+subject+'&body='+body;
+  if (!name || !email) { alert('Please enter your name and email before sending.'); return; }
+  const payload=new URLSearchParams({
+    'form-name':'corporate-partner',
+    'name':name,'org':org,'email':email,'phone':phone,'goals':goals
+  });
+  fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: payload.toString() }).catch(()=>{});
   document.getElementById('partner-form-wrap').style.display='none';
   document.getElementById('partner-success').style.display='block';
 }
