@@ -844,6 +844,7 @@ function toggleMobileMenu() {
 <section class="hero">
   <div class="hero-left">
 
+    <span style="display:inline-block;background:var(--coral);color:#fff;padding:6px 16px;border-radius:100px;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:22px;">Hablamos Español</span>
     <h1>Built for the next move.</h1>
     <p class="hero-deck">You built it. We bring the systems and <em>infrastructure</em> for what's next.</p>
     <div class="hero-btns">
@@ -903,7 +904,12 @@ function toggleMobileMenu() {
         <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--coral);margin-bottom:12px;">Launch Pad</div>
         <p style="color:rgba(245,240,232,0.65);font-size:0.92rem;line-height:1.8;margin-bottom:32px;font-weight:300;">For entrepreneurs who haven't yet registered a business. No LLC, no EIN, no business bank account — not because you haven't been working, but because the work has lived off paper. Launch Pad is where we file the registration, open the accounts, and build your first real digital presence, together.</p>
         <div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:28px;margin-bottom:12px;">
-          <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,240,232,0.45);margin-bottom:20px;">Free to All Builders</div>
+          <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,240,232,0.45);margin-bottom:10px;">The Builder Pathway</div>
+          <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px;">
+            <span style="font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:var(--cream);line-height:1;">$500</span>
+            <span style="font-size:0.78rem;color:rgba(245,240,232,0.55);">per Builder</span>
+          </div>
+          <p style="font-size:0.82rem;color:rgba(245,240,232,0.7);line-height:1.55;margin:0 0 22px;">Scholarships reserved for Builders who commit $100 of their own. Sponsors cover the remaining $400.</p>
           <ul style="list-style:none;display:flex;flex-direction:column;gap:13px;">
             <li style="display:flex;gap:12px;align-items:flex-start;font-size:0.9rem;color:rgba(245,240,232,0.8);line-height:1.6;"><span style="color:var(--coral);font-weight:700;flex-shrink:0;">→</span>Money readiness coaching — scoped to your situation</li>
             <li style="display:flex;gap:12px;align-items:flex-start;font-size:0.9rem;color:rgba(245,240,232,0.8);line-height:1.6;"><span style="color:var(--coral);font-weight:700;flex-shrink:0;">→</span>Verizon Digital Ready curriculum — industry-specific, grant eligible</li>
@@ -1170,7 +1176,7 @@ function toggleMobileMenu() {
       <input type="text" id="con-biz" class="form-input" placeholder="Business Name (if you have one)" style="margin-bottom:16px;">
       <textarea id="con-notes" class="form-input" rows="3" placeholder="Anything else we should know?" style="resize:vertical;margin-bottom:24px;"></textarea>
       <button onclick="submitContact()" style="width:100%;background:var(--green);color:white;border:none;padding:18px 32px;border-radius:14px;font-size:1rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s;" onmouseover="this.style.background='var(--green-mid)'" onmouseout="this.style.background='var(--green)'">Send My Information →</button>
-      <p style="text-align:center;color:rgba(17,17,17,0.4);font-size:0.85rem;margin-top:16px;">No payment required. Legacy service fees are discussed during our first conversation.</p>
+      <p style="text-align:center;color:rgba(17,17,17,0.4);font-size:0.85rem;margin-top:16px;">No payment to inquire. Builder Pathway pricing, scholarships, and Legacy service fees are discussed during our first conversation.</p>
 
       </div>
 
@@ -1237,16 +1243,18 @@ function submitContact() {
     <!-- DONATE PANEL -->
     <div style="background:var(--cream);border-radius:24px;padding:52px 44px;display:flex;flex-direction:column;">
       <div style="font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--coral);margin-bottom:12px;">For Foundations &amp; Individuals</div>
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--green);line-height:1.2;margin-bottom:16px;">Donate to Melon</h3>
-      <p style="color:rgba(17,17,17,0.65);font-size:0.95rem;line-height:1.7;font-weight:300;margin-bottom:32px;flex:1;">Your gift directly funds education and digital inclusion programming — for the entrepreneurs most systems overlook. Every skill we teach leads somewhere. Tax-deductible. All amounts welcome.</p>
-      <button onclick="openDonateModal()" style="background:var(--coral);color:white;border:none;padding:18px 32px;border-radius:100px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s;width:fit-content;" onmouseover="this.style.background='#f0705d'" onmouseout="this.style.background='var(--coral)'">Make a Donation →</button>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--green);line-height:1.2;margin-bottom:16px;">Sponsor a Builder</h3>
+      <p style="color:rgba(17,17,17,0.65);font-size:0.95rem;line-height:1.7;font-weight:300;margin-bottom:24px;flex:1;">$400 funds the scholarship portion of one Launch Pad seat — completing the pathway for a Builder who commits $100 of their own. Sponsor one, sponsor a cohort of eight for $3,200, or give any amount to the general Builder Fund.</p>
+      <p style="color:rgba(17,17,17,0.5);font-size:0.78rem;line-height:1.6;font-style:italic;margin-bottom:32px;">Tax-deductible through our fiscal sponsor, A Brighter Way, a Michigan 501(c)(3).</p>
+      <button onclick="openDonateModal()" style="background:var(--coral);color:white;border:none;padding:18px 32px;border-radius:100px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s;width:fit-content;" onmouseover="this.style.background='#f0705d'" onmouseout="this.style.background='var(--coral)'">Sponsor a Builder →</button>
     </div>
 
     <!-- CORPORATE PARTNER PANEL -->
     <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:24px;padding:52px 44px;display:flex;flex-direction:column;">
       <div style="font-size:0.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--coral);margin-bottom:12px;">For Corporations &amp; Businesses</div>
       <h3 style="font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--cream);line-height:1.2;margin-bottom:16px;">Become a Corporate Partner</h3>
-      <p style="color:rgba(245,240,232,0.6);font-size:0.95rem;line-height:1.7;font-weight:300;margin-bottom:32px;flex:1;">Corporate partnerships fund program infrastructure, cohort delivery, and long-term capacity. Partners receive visibility, community trust, and the satisfaction of directly expanding economic inclusion in Southeast Michigan. Inquiries via check or formal agreement — let's talk.</p>
+      <p style="color:rgba(245,240,232,0.6);font-size:0.95rem;line-height:1.7;font-weight:300;margin-bottom:24px;flex:1;">Corporate partnerships fund program infrastructure, cohort delivery, and long-term capacity. Partners receive visibility, community trust, and the satisfaction of directly expanding economic inclusion in Southeast Michigan. Inquiries via check or formal agreement — let's talk.</p>
+      <p style="color:rgba(245,240,232,0.45);font-size:0.78rem;line-height:1.6;font-style:italic;margin-bottom:32px;">Tax-deductible through our fiscal sponsor, A Brighter Way, a Michigan 501(c)(3).</p>
       <button onclick="openPartnerModal()" style="background:transparent;color:var(--cream);border:2px solid var(--coral);padding:18px 32px;border-radius:100px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s;width:fit-content;" onmouseover="this.style.background='var(--coral)'" onmouseout="this.style.background='transparent'">Inquire About Partnership →</button>
     </div>
 
@@ -1324,7 +1332,7 @@ const selections = {};
 const serviceLabels = {
   who: { returning:'Returning Citizen', immigrant:'Immigrant / New American', both:'Both paths apply', other:'Facing barriers — needs guidance' },
   stage: { idea:'Just getting started (Idea Stage)', launched:'Recently launched (0–2 years)', growing:'Growing business', barriers:'Facing a barrier right now' },
-  need: { financial:'Financial Healing (Free)', business:'Business Coaching & Planning (Free)', digital:'Digital Inclusion (Free)', launch:'Business Launch Materials (Paid)' }
+  need: { financial:'Financial Healing', business:'Business Coaching & Planning', digital:'Digital Inclusion', launch:'Business Launch Materials' }
 };
 
 function selectOption(key, value, currentStep, nextStep) {
@@ -1465,7 +1473,7 @@ document.addEventListener('click',function(e){ if(e.target===document.getElement
     </ul>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Melon 29:7 Southeast Michigan LLC &nbsp;·&nbsp; Fiscally Sponsored by <a href="https://abrighterway.org/" target="_blank" rel="noopener" style="color:var(--coral);text-decoration:none;">A Brighter Way</a></span>
+    <span>© 2026 Melon 29:7 Southeast Michigan LLC</span>
     <a href="https://g.page/r/CXAiAstpUy7JEBE/review" target="_blank" rel="noopener">⭐ Leave a Review</a>
   </div>
 </footer>
